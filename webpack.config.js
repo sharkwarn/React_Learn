@@ -22,7 +22,12 @@ module.exports =  {
     path: `${__dirname}/dist/js`,
     filename: 'bundle.js'
   },
+  devtool: 'source-map',
+  debug: true,
   module: {
+    preLoaders: [
+      {test: /\.js$/,exclude: /node_modules/,loader: "eslint-loader"},
+    ],
     //加载器配置
     loaders: [
       {test: /\.js$/,exclude: /node_modules/,loader: "babel-loader",query:{presets:['react','es2015']}},
